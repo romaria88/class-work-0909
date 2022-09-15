@@ -1,31 +1,13 @@
-window.addEventListener("load", function () {
+const openPopUp = document.querySelector('.open_pop_up');
+const closePopUp= document.querySelector('.close_pop_up');
+const popUp = document.querySelector('.pop_up');
+console.log(closePopUp);
 
-    function sendMessage(e) {
-        e.preventDefault()
+openPopUp.addEventListener('click', function(e){
+    e.preventDefault();
+    popUp.classList.add('active');
+})
 
-        
-        const content = document.querySelector('.app__content')
-
-        const text = document.createElement('li')
-        text.className = 'app__text'
-
-        const time = document.createElement('span')
-        time.className = 'app__time'
-
-        const currentTime = new Date();
-        
-        time.textContent = currentTime.getHours() + ':' + currentTime.getMinutes()
-
-        
-        const input = document.querySelector('.app__input')
-
-        text.text = input.value        
-
-        text.appendChild(time)
-
-        content.appendChild(text)
-
-        input.value = ''        
-    }
-    document.querySelector('.app__form').addEventListener('submit', sendMessage)
-});
+closePopUp.addEventListener('click', () => {
+    popUp.classList.remove('active');
+})
